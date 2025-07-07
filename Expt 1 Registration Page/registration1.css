@@ -2,7 +2,15 @@ body {
     background-color: black;
     color: white;
     font-family: 'Lucida Sans', Geneva, Verdana, sans-serif;
+    background-image: url('image.png');
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    color: white;
+    font-family: 'Lucida Sans', Geneva, Verdana, sans-serif;
 }
+
 
 .Heading {
     font-family: 'Courier New', Courier, monospace;
@@ -68,4 +76,20 @@ button:hover {
 
 .center {
     text-align: center;
+}
+
+.hint {
+    color: red;
+    font-size: 12px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+input.valid {
+    border: 2px solid green;
+}
+
+input.invalid {
+    border: 2px solid red;
 }

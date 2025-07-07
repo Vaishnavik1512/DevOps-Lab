@@ -13,10 +13,12 @@
     <form class="userDetails" id="registrationForm">
         <label class="firstName">First Name: </label>
         <input class="firstNameInput" type="text" id="firstName" required>
+        <small id="firstNameHint" class="hint"></small>
         <p></p>
 
         <label class="lastName">Last Name: </label>
         <input class="lastNameInput" type="text" id="lastName" required>
+        <small id="lastNameHint" class="hint"></small>
         <p></p>
 
         <label class="gender">Gender: </label>
@@ -41,6 +43,7 @@
 
         <label class="userName">UserName: </label>
         <input class="userNameInput" type="text" id="userName" required>
+        <small id="userNameHint" class="hint"></small>
         <p></p>
 
         <label class="password">Password: </label>
@@ -53,10 +56,12 @@
 
         <label class="state">State: </label>
         <input class="stateInput" type="text" id="state" required>
+        <small id="stateHint" class="hint"></small>
         <p></p>
 
         <label class="country">Country: </label>
         <input class="countryInput" type="text" id="country" required>
+        <small id="countryHint" class="hint"></small>
         <p></p>
 
         <label class="dob">Date of Birth: </label>
@@ -71,6 +76,81 @@
     <p></p>
 
     <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const firstNameInput = document.getElementById('firstName');
+            const lastNameInput = document.getElementById('lastName');
+            const userNameInput = document.getElementById('userName');
+            const stateInput = document.getElementById('state');
+            const countryInput = document.getElementById('country');
+
+            const namePattern = /^[A-Za-z]*$/;
+            const usernamePattern = /^[A-Za-z0-9_]*$/;
+
+            firstNameInput.addEventListener("input", function () {
+                validateLive(this, namePattern, "firstNameHint", "Only alphabets allowed.");
+            });
+
+            lastNameInput.addEventListener("input", function () {
+                validateLive(this, namePattern, "lastNameHint", "Only alphabets allowed.");
+            });
+
+            userNameInput.addEventListener("input", function () {
+                if (this.value.length < 5) {
+                    setHint(this, "userNameHint", "Minimum 5 characters.", false);
+                } else {
+                    validateLive(this, usernamePattern, "userNameHint", "Only letters, numbers, and underscores allowed.");
+                }
+            });
+
+            stateInput.addEventListener("input", function () {
+                validateLive(this, namePattern, "stateHint", "Only alphabets allowed.");
+            });
+
+            countryInput.addEventListener("input", function () {
+                validateLive(this, namePattern, "countryHint", "Only alphabets allowed.");
+            });
+        });
+
+        function validateLive(inputElement, pattern, hintId, hintText) {
+            if (pattern.test(inputElement.value)) {
+                setHint(inputElement, hintId, "", true);
+            } else {
+                setHint(inputElement, hintId, hintText, false);
+            }
+        }
+
+        function setHint(inputElement, hintId, message, isValid) {
+            const hint = document.getElementById(hintId);
+            hint.textContent = message;
+            if (isValid) {
+                inputElement.classList.add("valid");
+                inputElement.classList.remove("invalid");
+            } else {
+                inputElement.classList.add("invalid");
+                inputElement.classList.remove("valid");
+            }
+        }
+
+        function validateLive(inputElement, pattern, hintId, hintText) {
+            if (pattern.test(inputElement.value)) {
+                setHint(inputElement, hintId, "", true);
+            } else {
+                setHint(inputElement, hintId, hintText, false);
+            }
+        }
+
+        function setHint(inputElement, hintId, message, isValid) {
+            const hint = document.getElementById(hintId);
+            hint.textContent = message;
+            if (isValid) {
+                inputElement.classList.add("valid");
+                inputElement.classList.remove("invalid");
+            } else {
+                inputElement.classList.add("invalid");
+                inputElement.classList.remove("valid");
+            }
+        }
+
         // Function to validate form
         function validateForm(event) {
             event.preventDefault(); // Prevent form submission to handle validation
@@ -134,7 +214,21 @@
         // Reset form function
         function resetForm() {
             document.getElementById("registrationForm").reset();
+
+            // Remove all 'valid' and 'invalid' classes and clear hint texts
+            const inputs = document.querySelectorAll("#registrationForm input");
+            const hints = document.querySelectorAll(".hint");
+
+            inputs.forEach(input => {
+                input.classList.remove("valid");
+                input.classList.remove("invalid");
+            });
+
+            hints.forEach(hint => {
+                hint.textContent = "";
+            });
         }
+
     </script>
 </body>
 </html>
