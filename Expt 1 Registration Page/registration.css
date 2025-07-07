@@ -1,0 +1,34 @@
+.Heading {
+    font-family: 'Courier New', Courier, monospace;
+    color: white;
+}
+
+body {
+    background-color: black;
+}
+
+.userDetails {
+    color: white;
+    align-items:first baseline;
+    margin-left: 550px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+    border: 2px solid white;   
+    padding: 20px;             
+    border-radius: 10px;      
+    background-color: rgba(0, 0, 0, 0.7); 
+    width: 400px;        
+}
+
+.reset, .submit {
+    background-color: dodgerblue;
+    color: white;
+    cursor: pointer;
+    font-size: 12px; 
+    padding: 15px 10px; 
+    min-width: 100px; 
+}
+
+.reset {
+    margin-left: 10px;
+}

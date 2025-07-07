@@ -1,0 +1,98 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MyWidgetExplorer());
+}
+
+class MyWidgetExplorer extends StatelessWidget {
+  const MyWidgetExplorer({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Widget Explorer',
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Explore Flutter Widgets'),
+        ),
+        body: Padding(
+          padding: const EdgeInsets.all(16),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                // Text Widget
+                const Text(
+                  'This is a Text widget',
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 20),
+
+                // Image Widget from Network
+                Image.network(
+                  'https://flutter.dev/images/flutter-logo-sharing.png',
+                  height: 150,
+                ),
+                const SizedBox(height: 20),
+
+                // Container Widget
+                Container(
+                  width: double.infinity,
+                  height: 60,
+                  color: Colors.blueAccent,
+                  alignment: Alignment.center,
+                  child: const Text(
+                    'This is a Container',
+                    style: TextStyle(color: Colors.white, fontSize: 18),
+                  ),
+                ),
+                const SizedBox(height: 20),
+
+                // Row Widget
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Icon(Icons.home, size: 30, color: Colors.teal),
+                    Icon(Icons.star, size: 30, color: Colors.orange),
+                    Icon(Icons.favorite, size: 30, color: Colors.red),
+                  ],
+                ),
+                const SizedBox(height: 20),
+
+                // ElevatedButton Widget
+                ElevatedButton(
+                  onPressed: () {
+                    debugPrint('Button Clicked!');
+                  },
+                  child: const Text('Click Me'),
+                ),
+                const SizedBox(height: 20),
+
+                // Card Widget
+                Card(
+                  elevation: 4,
+                  margin: const EdgeInsets.all(8),
+                  child: Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Column(
+                      children: const [
+                        Text(
+                          'This is a Card widget',
+                          style: TextStyle(fontSize: 18),
+                        ),
+                        SizedBox(height: 8),
+                        Text(
+                          'It has padding, elevation, and rounded corners.',
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}

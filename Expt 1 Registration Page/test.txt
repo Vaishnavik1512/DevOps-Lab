@@ -1,0 +1,9 @@
+first name
+last name
+age - calculate
+gender
+course in dropdown 
+username 
+password confirm password
+state country
+DOB with calendar
